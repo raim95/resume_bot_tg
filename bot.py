@@ -1,15 +1,15 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk') # Токен API к Telegram
+updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ') # Токен API к Telegram
 dispatcher = updater.dispatcher
 
 
 def startCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text='Привет, давай пообщаемся?')
+    bot.send_message(chat_id=update.message.chat_id, text='Привет, меня зовут Альтрон?')
 
 def textMessage(bot, update):
-    response = 'Получил Ваше сообщение: ' + update.message.text
+    response = 'Альтрон получил Ваше сообщение: ' + update.message.text
     bot.send_message(chat_id=update.message.chat_id, text=response)
 
 

@@ -12,7 +12,7 @@ def startCommand(bot, update):
 def textMessage(bot, update):
 	request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4')
 	request.lang = 'ru'
-    request.session_id = 'BatlabAIBot'
+	request.session_id = 'BatlabAIBot'
 	request.query = update.message.text
 	responseJson = json.loads(request.getresponse().read().decode('utf-8'))
 	response = responseJson['result']['fulfilment']['speech']

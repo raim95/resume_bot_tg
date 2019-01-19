@@ -7,7 +7,7 @@ updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
 dispatcher = updater.dispatcher
 
 def startCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text='Привет, меня зовут Альтрон.')
+    bot.send_message(chat_id=update.message.chat_id, text='Привет, давай пообщаемся?')
 
 def textMessage(bot, update):
 	request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4').text_request()

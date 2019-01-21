@@ -2,8 +2,8 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import apiai, json
 
-updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
-#updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk')
+#updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
+updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk')
 dispatcher = updater.dispatcher
 
 def startCommand(bot, update):

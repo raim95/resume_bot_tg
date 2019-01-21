@@ -4,9 +4,9 @@ import telebot
 
 bot = telebot.TeleBot(config.token)
 
-@bot.message_handler(content_types=["text"])
-def repeat(message):
-	bot.send_message(message.chat.id, message.text)
+#@bot.message_handler(content_types=["text"])
+#def repeat(message):
+#	bot.send_message(message.chat.id, message.text)
 
 @bot.message_handler(commands=['pic'])
 def find_file_ids(message):

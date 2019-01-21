@@ -1,6 +1,7 @@
 # -*- config: utf-8 -*-
 import config
 import telebot
+import os
 
 bot = telebot.TeleBot(config.token)
 

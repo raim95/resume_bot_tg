@@ -12,9 +12,9 @@ bot = telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['pic'])
 def find_file_ids(message):
+	file = open('files_id.txt', 'w')
+	file.close()
 	for file in os.listdir('pic/'):
-		file = open('files_id.txt', 'w')
-		file.close()
 		if file.split('.')[-1]=='jpg':
 			f = open ('pic/'+file, 'rb')
 			msg = bot.send_photo(message.chat.id, f)

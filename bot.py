@@ -16,7 +16,7 @@ def find_file_ids(message):
 		if file.split('.')[-1]=='jpg':
 			f = open ('pic/'+file, 'rb')
 			msg = bot.send_photo(message.chat.id, f)
-			bot.send_message(message.chat.id, msg.photo.file_id, reply_to_message_id=msg.message_id)
+			bot.send_message(message.chat.id, msg.photo[0].file_id, reply_to_message_id=msg.message_id)
 		time.sleep(3)
 
 if __name__ =='__main__':

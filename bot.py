@@ -7,12 +7,20 @@ bot = telebot.TeleBot(config.token)
 @bot.message_handler(commands=["start"])
 def keys(message):
 	key = types.ReplyKeyboardMarkup()
-	key.row("1","2","3")
-	bot.send_message(message.chat.id, "Выберите цифру:", reply_markup=key)
+	key.row("Где учился?","Где работал?","Расскажи о себе", "Как с тобой связаться?")
+	bot.send_message(message.chat.id, config.himsg, reply_markup=key)
 
 @bot.message_handler(content_types=["text"])
 def repeat(message):
-	bot.send_message(message.chat.id, config.himsg)
+	if message.text == "Где учился?":
+		bot.send_message(message.chat.id, config.study)
+	elif message.text == "Где работал?":
+		bot.send_message(message.chat.id, config.work)
+	elif message.text == "Расскажи о себе":
+		bot.send_message(message.chat.id, config.about)
+	elif message.text == "Как с тобой связаться?":
+		bot.send_message(message.chat.id, config.contacts)
+	else bot.send_message(message.chat.id, config.himsg, reply_markup=key)
 
 
 

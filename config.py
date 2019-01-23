@@ -1,6 +1,7 @@
 #token = '642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ' #amazon_version
 #token = '692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk' #master
-token = '677317210:AAGkOq4ST8ceOvaOUErkhUBB6gmdS40nxLE' #summary
+#token = '677317210:AAGkOq4ST8ceOvaOUErkhUBB6gmdS40nxLE' #summary
+token = '623735971:AAHz9Nm_9mkpsQCwvzFfvT8MgfcvM9iJIas' #alpl_summary_bot
 himsg = 'Здравствуйте! Я бот-резюме. Узнать некоторые факты обо мне ты сможешь с помощью меню внизу. Если ты потерял меню, оно откроется по нажатию иконки из квадратиков возле значка камеры.'
 work = '''
 Опыт работы у меня пока что не многочисленен. Во время учеты в университете занимался администрированием локльной сети студгородка: несколько общежитий, около 1500 студентов. 

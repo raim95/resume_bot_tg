@@ -20,8 +20,7 @@ def repeat(message):
 		bot.send_message(message.chat.id, config.about)
 	elif message.text == "Как с тобой связаться?":
 		bot.send_message(message.chat.id, config.contacts)
-	else bot.send_message(message.chat.id, config.himsg, reply_markup=key)
-
+	else: keys(message)
 
 
 if __name__ =='__main__':

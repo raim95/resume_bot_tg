@@ -1,12 +1,8 @@
 import config
 import telebot
 from telebot import types
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import apiai, json
 
-updater = Updater(token=config.token)
 bot = telebot.TeleBot(config.token)
-dispatcher = updater.dispatcher
 
 @bot.message_handler(commands=["start"])
 def keys(message):
@@ -26,19 +22,7 @@ def repeat(message):
 		bot.send_message(message.chat.id, config.contacts)
 	else bot.send_message(message.chat.id, config.himsg, reply_markup=key)
 
-def textMessage(bot, update):
-    request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4').text_request()
-    request.lang = 'ru'
-    request.session_id = 'BatlabAIBot' 
-    request.query = update.message.text
-    responseJson = json.loads(request.getresponse().read().decode('utf-8'))
-    response = responseJson['result']['fulfillment']['speech']
-    if response:
-        bot.send_message(chat_id=update.message.chat_id, text=response)
-    else:
-        bot.send_message(chat_id=update.message.chat_id, text='Я Вас не совсем понял!')
 
-dispatcher.add_handler(text_message_handler)
 
 if __name__ =='__main__':
 	bot.polling(none_stop = True)

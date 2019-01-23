@@ -12,7 +12,7 @@ def keys(message):
 
 @bot.message_handler(content_types=["text"])
 def repeat(message):
-	bot.send_message(message.chat.id, message.text)
+	bot.send_message(message.chat.id, "Здравствуйте! Я бот-резюме. Узнать некоторые факты обо мне ты сможешь с помощью меню внизу. Если ты потерял меню, оно откроется по нажатию иконки из квадратиков возле значка камеры.")
 
 
 

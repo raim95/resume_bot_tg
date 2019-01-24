@@ -7,7 +7,8 @@ bot = telebot.TeleBot(config.token)
 @bot.message_handler(commands=["start"])
 def keys(message):
 	key = types.ReplyKeyboardMarkup()
-	key.row("Где учился?","Где работал?","Расскажи о себе", "Как с тобой связаться?")
+	key.row("Где учился?","Где работал?")
+	key.row("Расскажи о себе", "Как с тобой связаться?")
 	bot.send_message(message.chat.id, config.himsg, reply_markup=key)
 
 @bot.message_handler(content_types=["text"])

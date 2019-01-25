@@ -1,6 +1,6 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import apiai, json, telegram.
+import apiai, json, telegram
 
 #updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
 updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk')
@@ -11,7 +11,7 @@ def keys(bot, update):
 	key_2 = telegram.keyboardButton('1')
 	key_3 = telegram.keyboardButton('1')
 	key_4 = telegram.keyboardButton('1')
-	
+
 def keyboard(bot, update):
 	board = telegram.ReplyKeyboardMarkup(keys)
 

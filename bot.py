@@ -1,29 +1,44 @@
-# -*- config: utf-8 -*-
-import config
-import telebot
-import os
-import time
 
-bot = telebot.TeleBot(config.token)
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import apiai, json, telegram.
 
-#@bot.message_handler(content_types=["text"])
-#def repeat(message):
-#	bot.send_message(message.chat.id, message.text)
+#updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
+updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk')
+dispatcher = updater.dispatcher
 
-@bot.message_handler(commands=['pic'])
-def find_file_ids(message):
-	file = open('files_id.txt', 'w')
-	file.close()
-	for file in os.listdir('pic/'):
-		if file.split('.')[-1]=='jpg':
-			f = open ('pic/'+file, 'rb')
-			msg = bot.send_photo(message.chat.id, f)
-			bot.send_message(message.chat.id, msg.photo[0].file_id, reply_to_message_id=msg.message_id)
-			#file_id = msg.photo[0].file_id
-			f = open('files_id.txt', 'a')
-			f.write(msg.photo[0].file_id +'\n')
-			f.close()
-		time.sleep(3)
+def keys(bot, update):
+	key_1 = telegram.keyboardButton('1')
+	key_2 = telegram.keyboardButton('1')
+	key_3 = telegram.keyboardButton('1')
+	key_4 = telegram.keyboardButton('1')
+	
+def keyboard(bot, update):
+	board = telegram.ReplyKeyboardMarkup(keys)
 
-if __name__ =='__main__':
-	bot.polling(none_stop = True)
+def startCommand(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, ReplyKeyboardMarkup = board, text='Привет, давай пообщаемся?')
+
+def textMessage(bot, update):
+	request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4').text_request()
+	request.lang = 'ru'
+	request.session_id = 'BatlabAIBot'
+	request.query = update.message.text
+	responseJson = json.loads(request.getresponse().read().decode('utf-8'))
+	response = responseJson['result']['fulfillment']['speech']
+	if response:
+		bot.send_message(chat_id=update.message.chat_id, text=response)
+	else:
+		bot.send_message(chat_id=update.message.chat_id, text='Do not undestand')
+
+start_command_handler = CommandHandler('start', startCommand)
+text_message_handler = MessageHandler(Filters.text, textMessage)
+
+
+dispatcher.add_handler(start_command_handler)
+dispatcher.add_handler(text_message_handler)
+
+
+updater.start_polling(clean=True)
+
+
+updater.idle()

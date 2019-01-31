@@ -1,30 +1,21 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import apiai, json, telegram
+import apiai, json
 
 updater = Updater(token='642035956:AAG5VuVk81SI_McYQRhXvjAZipdJTeaUVHQ')
-#updater = Updater(token='692923906:AAGQyhbVjjXDhi4HL2q1KxwQ2EERsuC0qAk')
 dispatcher = updater.dispatcher
 
-def keys(bot, update):
-	key_1 = telegram.keyboardButton('1')
-	key_2 = telegram.keyboardButton('1')
-	key_3 = telegram.keyboardButton('1')
-	key_4 = telegram.keyboardButton('1')
-
-def keyboard(bot, update):
-	board = telegram.ReplyKeyboardMarkup(keys)
 
 def startCommand(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, ReplyKeyboardMarkup = board, text='Привет, давай пообщаемся?')
+    bot.send_message(chat_id=update.message.chat_id, text='Привет, меня зовут Альтрон.')
 
 def textMessage(bot, update):
-	request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4').text_request()
+	request = apiai.ApiAI('d19ec966a8314d22bacbe59da0dfc2a4')
 	request.lang = 'ru'
-	request.session_id = 'BatlabAIBot'
+    request.session_id = 'BatlabAIBot'
 	request.query = update.message.text
 	responseJson = json.loads(request.getresponse().read().decode('utf-8'))
-	response = responseJson['result']['fulfillment']['speech']
+	response = responseJson['result']['fulfilment']['speech']
 	if response:
 		bot.send_message(chat_id=update.message.chat_id, text=response)
 	else:

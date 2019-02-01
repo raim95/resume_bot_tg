@@ -3,7 +3,8 @@ import config
 import telebot
 import os
 import time
-
+from random import shuffle
+import utils
 bot = telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['pic'])

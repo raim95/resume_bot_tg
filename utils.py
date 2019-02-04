@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import shelve
+import random
 from random import shuffle
 from SQLighter import SQLighter
 from config import shelve_name, database_name
